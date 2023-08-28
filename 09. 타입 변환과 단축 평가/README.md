@@ -299,7 +299,7 @@ __표현식을 평가하는 도중에 평가 결과가 확정된 경우 나머�
   message = done && '완료';
   console.log(message); // 완료
 
-  //어떤 조건이 Falsy할 때는 논리곱(||) 연산자 활용
+  //어떤 조건이 Falsy할 때는 논리합(||) 연산자 활용
   var done = false;
   var message = '';
   
