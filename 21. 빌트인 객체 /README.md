@@ -296,30 +296,20 @@ console.log(x); // 1
 전달받은 인수의 타입이 숫자가 아닌 경우, 숫자로 타입 변환 후 검사를 수행한다. NaN이면 false를 반환한다.
 
 ```js
-// 숫자
-isNaN(NaN); // -> true
-isNaN(10);  // -> false
+// 인수가 유한수이면 true를 반환한다.
+isFinite(0);    // -> true
+isFinite(2e64); // -> true
+isFinite('10'); // -> true: '10' → 10(문자열->숫자)
+isFinite(null); // -> true: null → 0(null->0)
 
-// 문자열
-isNaN('blabla'); // -> true: 'blabla' => NaN
-isNaN('10');     // -> false: '10' => 10
-isNaN('10.12');  // -> false: '10.12' => 10.12
-isNaN('');       // -> false: '' => 0
-isNaN(' ');      // -> false: ' ' => 0
+// 인수가 무한수 또는 NaN으로 평가되는 값이라면 false를 반환한다.
+isFinite(Infinity);  // -> false
+isFinite(-Infinity); // -> false
 
-// 불리언
-isNaN(true); // -> false: true → 1
-isNaN(null); // -> false: null → 0
-
-// undefined
-isNaN(undefined); // -> true: undefined => NaN
-
-// 객체
-isNaN({}); // -> true: {} => NaN
-
-// date
-isNaN(new Date());            // -> false: new Date() => Number
-isNaN(new Date().toString()); // -> true:  String => NaN
+// 인수가 NaN으로 평가되는 값이라면 false를 반환한다.
+isFinite(NaN);     // -> false
+isFinite('Hello'); // -> false
+isFinite('2005/12/12'); // -> false
 ```
 
 #### isNaN
