@@ -504,3 +504,41 @@ function foo(...rest = []) {
 ```
 
 매개변수 기본값은 함수 정의 시 선언한 매개변수 개수를 나타내는 함수 객체의 length 프로퍼티와 arguments 객체에 아무런 영향을 주지 않는다.
+
+---
+
+## 🎯 퀴즈
+
+<details>
+<summary>1. `spread` 연산자와 `rest` 파라미터의 차이는 무엇인가?</summary>
+<div>
+
+_rest_
+
+- rest 매개변수는 모든 요소를 배열로 모은 것이며, 여러 개의 함수 인수를 전달하는 경우 사용된다.
+- 또한 rest 파라미터는 구조 분해(destructuring)에 사용할 수 있다.
+  ```js
+  let arrNumber = [1, 2, 3, 4, 5];
+  let [firstNumber, ...restNumber] = arrNumber;
+  
+  console.log(firstNumber); //1
+  console.log(restNumber); //[2, 3, 4, 5]
+  ```
+
+_spread_
+-  Spread 연산자는 rest 매개변수와는 반대로 압축되어 있는 값을 단일 요소로 압축을 푸는 기능을 수행한다.
+   ```js
+    function sumFunc(firstParam, secondParam) {
+      return firstParam + secondParam;
+    }
+    
+    let arrNumber = [10, 20];
+    let sumValue = sumFunc(...arrNumber);
+    
+    console.log(sumValue); // 30
+   //위 예제에서 sumFunc() 함수를 호출할 때, Spread 연산자를 사용한다. 배열 arrNumber는 10과 20 두 개의 요소를 가지고 있으며, Spread 연산자로 배열로 단일 요소로 압축      을 해제한다.
+   ```
+- `Object.create`, `slice` 나 라이브러리 함수를 사용하지 않고도 배열이나 객체의 복사본을 쉽게 만들 수 있다.
+</div>
+</details>
+
